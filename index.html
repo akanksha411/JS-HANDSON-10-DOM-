@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1 style="text-align: center;">DOM</h1>
+    <pre id="text">
+Q1:Write the code to access element which is having id as "text"
+
+Answer: var a=document.getElementById('text');
+        console.log(a);
+    </pre>
+    <pre>
+Q2:Write the code to access element which is having tag as "h1"
+
+Answer: var b=document.getElementsByTagName('h1');
+        console.log(b);
+    </pre>
+    <pre class="box">
+Q3:Write the code to access element which is having class as "box"
+Answer: let c=document.getElementsByClassName('box')
+        console.log(c);
+    </pre>
+    <pre>
+Q4:<h2>Hello </h2>
+Change the heading from ""Hello"" to ""Hello World"" using DOM functions
+
+Answer:let d=document.getElementsByTagName('h2')
+d[0].innerText="Hello World"
+    </pre>
+    <pre>
+Q5:Create three cards on HTML page and arrange them using flex property in row or horizontal direction and also create button at the bottom named "Change Flex direction". When user clicks on this button, the cards arrangement should be changed to vertical direction.
+
+Answer:var e1=document.createElement('div')
+var e2=document.createElement('div')
+var e3=document.createElement('div')
+document.getElementById('con').style.display="flex"
+document.getElementById('con').style.flexDirection="row"
+document.getElementById('con').appendChild(e1)
+document.getElementById('con').appendChild(e2)
+document.getElementById('con').appendChild(e3)
+e1.className="card"
+e2.className="card"
+e3.className="card"
+var e4=document.getElementsByClassName('card')
+e1.style.backgroundColor="cadetblue"
+e1.style.height="100px"
+e1.style.width="100px"
+for(var i=0;i< e4.length;i++){
+    e4[i].style.backgroundColor="cadetblue";
+    e4[i].style.height="100px"
+    e4[i].style.width="100px"
+    e4[i].style.margin='1rem'
+}
+var e5=document.createElement('button')
+e5.id='btn'
+e5.setAttribute('value','change')
+document.getElementById('con').appendChild(e5)
+e5.style.height='20px'
+e5.style.width='70px'
+document.getElementById('btn').addEventListener('click',change)
+function change(){
+    if(document.getElementById('con').style.flexDirection==="row"){
+        document.getElementById('con').style.flexDirection="column"
+    }
+    else{
+        document.getElementById('con').style.flexDirection="row"
+    }
+}
+    </pre>
+    <div id="con"></div>
+    <pre>
+Q6:What’s the difference between window vs document?
+
+Answer:
+ Window: It is the root level element in any web page.All Global variables are defined on the window object only.For example:alert(),confirm() are the methods in window object.The window object is the topmost object of the DOM hierarchy. It represents a browser window or frame that displays the contents of the webpage. Whenever a window appears on the screen to display the contents of the document, the window object is created.
+ Document: It is the direct child of window object(DOM).The document object represent a web page that is loaded in the browser. By accessing the document object, we can access the element in the HTML page.
+
+    </pre>
+    <pre>
+Q7:<h3>Hello </h3>
+Add one style attribute and give text color as red and id attribute and give the id value as ""heading"" in the above given h1 tag using DOM functions
+
+Answer:var g=document.getElementsByTagName('h3')
+console.log(g[0]);
+g[0].innerHTML='<h 1>Hello</h 1>'
+g[0].style.color='red'
+g[0].id='heading'
+    </pre>
+    <pre>
+Q8:Create an HTML page having content as Hello world and a button named Replace Text. When user will click on this button page content should be changed to "Welcome to Elevation academy"
+Answer: <h1 id="h">Hello World</h1>
+        <button value="Click" id="btn1">Click</button>
+        var h=document.getElementById('h')
+    document.getElementById('btn1').addEventListener('click',cl)
+    function cl(){
+        if(h.innerText==="Hello World"){
+            h.innerText='Welcome To Elevation Academy'
+        }
+        else{
+            h.innerText="Hello World"
+        }
+    }
+    </pre>
+    <pre>
+Q9:Write code to implement timer clock using JS -- display HH:MM:SS -- the time should keep updating every second
+
+Answer: function displayTime(){
+    let dt = new Date();
+    let hrs = dt.getHours();
+    let min = dt.getMinutes();
+    let sec = dt.getSeconds();
+    // console.log(hrs,min,sec);
+
+    document.getElementById("hrs").innerHTML=hrs + ":"
+    document.getElementById("min").innerHTML=min + ":"
+    document.getElementById("sec").innerHTML=sec
+}
+setInterval(displayTime,1000);
+
+<div id="t"><span id="hrs"></span><span id="min"></span><span id="sec"></span></div>
+    </pre>
+    <pre>
+Q10:Create a select drop down for selecting Year 20-21, 21-22 etc. Print the item text selected
+
+Answer:let selection = document.querySelector('select');
+let year = document.querySelector('#output');
+selection.addEventListener('change',() =>{
+    year.innerText = selection.options[selection.selectedIndex].text;
+})
+function formvalidate(){
+    let x = document.forms["formmy"]["fname"].value;
+    let mail = document.getElementById("mail").value;
+    let num = document.getElementById("phnum").value;
+    let yr = document.getElementById("dofb").value;
+    console.log(fname,mail,num,yr);
+}
+    </pre>
+    <form id="smallform">
+        <label for="year"><b>Select Year:</b></label>
+        <select id="year">
+            <option value="select year" disabled hidden selected>select year</option>
+            <option value="2020-2021">2020-2021</option>
+            <option value="2021-2022">2021-2022</option>
+            <option value="2022-2023">2022-2023</option>
+            <option value="2023-2024">2023-2024</option>
+        </select><br><br>
+        <span id="smallform">year: <span id="output">     </span></span>
+    </form><br>
+    <div id="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error, dolores.</div><br><br>
+    <form id="formmy">
+        <label for="fname">Full Name:</label>
+        <input type="text" placeholder="Enter Your Name..." name="fname" id="name" value=""><br><br>
+        <label for="email">Email:</label>
+        <input type="email" placeholder="Enter Your Email..." name="email" id="mail" value=""><br><br>
+        <label for="mobile">Mobile No:</label>
+        <input type="number" placeholder="Enter Your Mobile No..." name="mobile" id="phnum" value=""><br><br>
+        <label for="dob">Date of Birth:</label>
+        <input type="date"  name="dob" id="dofb" value=""><br><br>
+        <input type="button" value="Submit" id="sbtn" onclick="formvalidate()">
+    </form>
+<script src="./main.js"></script>
+
+</body>
+</html>
